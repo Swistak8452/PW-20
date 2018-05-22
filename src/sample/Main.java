@@ -51,7 +51,6 @@ public class Main extends Application {
         checkTime();
         createExcavators();
 
-
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent t) {
@@ -80,7 +79,7 @@ public class Main extends Application {
     }
 
     public void createExcavators() {
-        excavators = new Excavators(this);
+        Excavators excavators = new Excavators(this);
         excavators.start();
         imageOfExcavator1.setImage(excavatorImage);
         imageOfExcavator2.setImage(excavatorImage);
