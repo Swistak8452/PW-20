@@ -1,14 +1,11 @@
 package sample;
 
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-
-public class Koparka extends Thread{
+public class Excavator2 extends Thread{
     Main main;
-    int x = -400;
+    int x = -200;
     int y = -450;
 
-    Koparka(Main main){
+    Excavator2(Main main){
         this.main = main;
     }
 
@@ -30,6 +27,6 @@ public class Koparka extends Thread{
     }
 
     public void setCoordinates(double x, double y){
-        main.moveKoparka(x, y);
+        main.moveExcavator2(x, y);
     }
 }
