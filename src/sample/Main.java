@@ -16,13 +16,30 @@ public class Main extends Application {
     StackPane root = new StackPane();
     Time time;
     Text t1 = new Text();
-    Image img = new Image("resources/koparka.png");
+    Image excavatorImage = new Image("resources/koparka.png");
+    Image smallVehicleImage = new Image("resources/maly.png");
+    Image largeVehicleImage = new Image("resources/duzy.png");
     Excavators excavators;
-    ImageView iv1 = new ImageView();
-    ImageView iv2 = new ImageView();
-    ImageView iv3 = new ImageView();
-    ImageView iv4 = new ImageView();
-    ImageView iv5 = new ImageView();
+    ImageView imageOfExcavator1 = new ImageView();
+    ImageView imageOfExcavator2 = new ImageView();
+    ImageView imageOfExcavator3 = new ImageView();
+    ImageView imageOfExcavator4 = new ImageView();
+    ImageView imageOfExcavator5 = new ImageView();
+    ImageView imageOfSmallVehicle1 = new ImageView();
+    ImageView imageOfSmallVehicle2 = new ImageView();
+    ImageView imageOfSmallVehicle3 = new ImageView();
+    ImageView imageOfSmallVehicle4 = new ImageView();
+    ImageView imageOfSmallVehicle5 = new ImageView();
+    ImageView imageOfSmallVehicle6 = new ImageView();
+    ImageView imageOfSmallVehicle7 = new ImageView();
+    ImageView imageOfSmallVehicle8 = new ImageView();
+    ImageView imageOfSmallVehicle9 = new ImageView();
+    ImageView imageOfSmallVehicle10 = new ImageView();
+    ImageView imageOfLargeVehicle1 = new ImageView();
+    ImageView imageOfLargeVehicle2 = new ImageView();
+    ImageView imageOfLargeVehicle3 = new ImageView();
+    ImageView imageOfLargeVehicle4 = new ImageView();
+    ImageView imageOfLargeVehicle5 = new ImageView();
 
 
     @Override
@@ -57,46 +74,48 @@ public class Main extends Application {
 
     public void updateTime(int hour, int minute, int second) {
         String time = hour + ":" + minute + ":" + second;
+        t1.setTranslateX(-450);
+        t1.setTranslateY(-380);
         Platform.runLater(() -> t1.setText(time));
     }
 
     public void createExcavators() {
-        iv1.setImage(img);
         excavators = new Excavators(this);
         excavators.start();
-        root.getChildren().add(iv1);
-        iv2.setImage(img);
-        root.getChildren().add(iv2);
-        iv3.setImage(img);
-        root.getChildren().add(iv3);
-        iv4.setImage(img);
-        root.getChildren().add(iv4);
-        iv5.setImage(img);
-        root.getChildren().add(iv5);
+        imageOfExcavator1.setImage(excavatorImage);
+        imageOfExcavator2.setImage(excavatorImage);
+        imageOfExcavator3.setImage(excavatorImage);
+        imageOfExcavator4.setImage(excavatorImage);
+        imageOfExcavator5.setImage(excavatorImage);
+        root.getChildren().add(imageOfExcavator1);
+        root.getChildren().add(imageOfExcavator2);
+        root.getChildren().add(imageOfExcavator3);
+        root.getChildren().add(imageOfExcavator4);
+        root.getChildren().add(imageOfExcavator5);
     }
 
     public void moveExcavator1(double x, double y) {
-        iv1.setTranslateX(x);
-        iv1.setTranslateY(y);
+        imageOfExcavator1.setTranslateX(x);
+        imageOfExcavator1.setTranslateY(y);
     }
 
     public void moveExcavator2(double x, double y) {
-        iv2.setTranslateX(x);
-        iv2.setTranslateY(y);
+        imageOfExcavator2.setTranslateX(x);
+        imageOfExcavator2.setTranslateY(y);
     }
 
     public void moveExcavator3(double x, double y) {
-        iv3.setTranslateX(x);
-        iv3.setTranslateY(y);
+        imageOfExcavator3.setTranslateX(x);
+        imageOfExcavator3.setTranslateY(y);
     }
 
     public void moveExcavator4(double x, double y) {
-        iv4.setTranslateX(x);
-        iv4.setTranslateY(y);
+        imageOfExcavator4.setTranslateX(x);
+        imageOfExcavator4.setTranslateY(y);
     }
 
     public void moveExcavator5(double x, double y) {
-        iv5.setTranslateX(x);
-        iv5.setTranslateY(y);
+        imageOfExcavator5.setTranslateX(x);
+        imageOfExcavator5.setTranslateY(y);
     }
 }

@@ -13,18 +13,19 @@ public class Excavators extends Thread {
     public void run() {
         for (; ; ) {
             try {
-                if (y < -100) {
+                if (y < 0) {
+                    y++;
                     y++;
                 } else {
-                    y = -100;
+                    y = 0;
                 }
                 setCoordinates1(-400, y);
                 setCoordinates2(-200, y);
                 setCoordinates3(0, y);
                 setCoordinates4(200, y);
                 setCoordinates5(400, y);
-                Thread.sleep(10);
                 System.out.println(x + "a" + y);
+                Thread.sleep(40);
             } catch (InterruptedException e) {
             }
         }
@@ -45,4 +46,9 @@ public class Excavators extends Thread {
     public void setCoordinates5(double x, double y) {
         main.moveExcavator5(x, y);
     }
+
+    public void saveSpace(){
+
+    }
+
 }
