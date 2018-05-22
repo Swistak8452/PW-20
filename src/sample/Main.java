@@ -3,25 +3,28 @@ package sample;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
-public class Main extends Application {
 
+public class Main extends Application {
     StackPane root = new StackPane();
-    Czas czas;
+    Time time;
+    Text t1 = new Text(); // Instantiates only once
+
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         root.setStyle("-fx-background-color: #00FF00");
-        primaryStage.setTitle("Hello World");
+        primaryStage.setTitle("My App");
         primaryStage.setScene(new Scene(root, 1000, 800));
         primaryStage.show();
-        showTime();
+
+        root.getChildren().add(t1);
+
+        checkTime();
 
 
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
@@ -38,8 +41,13 @@ public class Main extends Application {
         launch(args);
     }
 
-    public void showTime(){
-        czas = new Czas();
-        czas.start();
+    public void checkTime(){
+        time = new Time(this); // Pass ownself into Time
+        time.start();
+    }
+
+    public void updateTime(int hour, int minute, int second){
+        String time = hour + ":" + minute + ":" + second;
+        Platform.runLater(() -> t1.setText(time));
     }
 }
