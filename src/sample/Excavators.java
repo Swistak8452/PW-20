@@ -3,7 +3,7 @@ package sample;
 public class Excavators extends Thread {
     Main main;
     int x = 0;
-    int y = -450;
+    int y = 0;
 
     Excavators(Main main) {
         this.main = main;
@@ -49,26 +49,37 @@ public class Excavators extends Thread {
     }
 
     public void moveDown() {
-        y = y + 2;
+        y = 0;
         setCoordinates();
+        main.stopBreak();
     }
 
     public void moveUp() {
-        y = y - 2;
+        y = -200;
         setCoordinates();
+        main.startBreak();
     }
 
     public void stay() {
         y = 0;
         setCoordinates();
+        main.stopBreak();
     }
 
     public void getTime(int h, int m, int s) {
-        if (h == 0 && m >= 5 && m < 35) {
-            moveUp();
-        } else if ((h == 0 && m >= 35) || (h == 1 && m < 5)) {
+        if (h == 0 && m >= 0 && m < 5) {
             moveDown();
-        } else {
+        } else if (h == 0 && m >= 5 && m < 15) {
+            moveUp();
+        } else if (h == 0 && m >= 15 && m < 30) {
+            moveDown();
+        } else if(h == 0 && m >= 30 && m < 45){
+            moveUp();
+        }else if(h == 0 && m >= 45 && m < 60){
+            moveDown();
+        }else if(h == 1 && m >= 0 && m < 15){
+            moveUp();
+        }else{
             stay();
         }
     }
