@@ -1,7 +1,5 @@
 package sample;
 
-import javafx.application.Platform;
-
 public class Excavators extends Thread {
     Main main;
     int x = 0;
@@ -15,7 +13,6 @@ public class Excavators extends Thread {
     public void run() {
         for (; ; ) {
             try {
-                moveDown();
                 System.out.println(x + "a" + y);
                 Thread.sleep(40);
             } catch (InterruptedException e) {
@@ -43,7 +40,7 @@ public class Excavators extends Thread {
         main.moveExcavator5(x, y);
     }
 
-    public void setCoordinates(){
+    public void setCoordinates() {
         setCoordinates1(-400, y);
         setCoordinates2(-200, y);
         setCoordinates3(0, y);
@@ -51,18 +48,28 @@ public class Excavators extends Thread {
         setCoordinates5(400, y);
     }
 
-    public void moveDown(){
+    public void moveDown() {
         y = y + 2;
         setCoordinates();
     }
 
-    public void moveUp(){
+    public void moveUp() {
         y = y - 2;
         setCoordinates();
     }
 
-    public void stay(){
+    public void stay() {
         y = 0;
         setCoordinates();
+    }
+
+    public void getTime(int h, int m, int s) {
+        if (h == 0 && m >= 5 && m < 35) {
+            moveUp();
+        } else if ((h == 0 && m >= 35) || (h == 1 && m < 5)) {
+            moveDown();
+        } else {
+            stay();
+        }
     }
 }

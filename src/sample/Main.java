@@ -16,9 +16,9 @@ public class Main extends Application {
     StackPane root = new StackPane();
     Time time;
     Text t1 = new Text();
-    Image excavatorImage = new Image("resources/koparka.png");
-    Image smallVehicleImage = new Image("resources/maly.png");
-    Image largeVehicleImage = new Image("resources/duzy.png");
+    Image excavatorImage = new Image("resources/excavator.png");
+    Image smallVehicleImage = new Image("resources/small.png");
+    Image largeVehicleImage = new Image("resources/large.png");
     Excavators excavators;
     ImageView imageOfExcavator1 = new ImageView();
     ImageView imageOfExcavator2 = new ImageView();
@@ -79,8 +79,6 @@ public class Main extends Application {
     }
 
     public void createExcavators() {
-        Excavators excavators = new Excavators(this);
-        excavators.start();
         imageOfExcavator1.setImage(excavatorImage);
         imageOfExcavator2.setImage(excavatorImage);
         imageOfExcavator3.setImage(excavatorImage);
