@@ -15,6 +15,7 @@ import javafx.stage.WindowEvent;
 public class Main extends Application {
     StackPane root = new StackPane();
     Time time;
+    Vehicles vehicles;
     Text t1 = new Text();
     Text t2 = new Text();
     Image excavatorImage = new Image("resources/excavator.png");
@@ -51,6 +52,8 @@ public class Main extends Application {
         primaryStage.show();
         checkTime();
         createExcavators();
+        createSmallVehicle();
+        moveVehicles();
 
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
@@ -65,6 +68,10 @@ public class Main extends Application {
         launch(args);
     }
 
+    public void moveVehicles(){
+        vehicles = new Vehicles(this);
+        vehicles.start();
+    }
     public void checkTime() {
         time = new Time(this);
         time.start();

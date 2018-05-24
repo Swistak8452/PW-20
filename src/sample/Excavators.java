@@ -1,5 +1,6 @@
 package sample;
 
+
 public class Excavators extends Thread {
     Main main;
     int x = 0;
@@ -10,14 +11,18 @@ public class Excavators extends Thread {
     }
 
 
-    public void run() {
-        for (; ; ) {
-            try {
-                System.out.println(x + "a" + y);
-                Thread.sleep(40);
-            } catch (InterruptedException e) {
-            }
-        }
+//    public void run() {
+//        for (; ; ) {
+//            try {
+//                System.out.println(x + "a" + y);
+//                Thread.sleep(20);
+//            } catch (InterruptedException e) {
+//            }
+//        }
+//    }
+
+    public void start(int h, int m, int s){
+        getTime(h, m, s);
     }
 
     public void setCoordinates1(double x, double y) {
