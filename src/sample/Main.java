@@ -11,13 +11,12 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
-import java.util.concurrent.locks.ReentrantLock;
-
 
 public class Main extends Application {
     StackPane root = new StackPane();
     Time time;
     SmallVehicles smallVehicles;
+    LargeVehicles largeVehicles;
     Text t1 = new Text();
     Text t2 = new Text();
     Image excavatorImage = new Image("resources/excavator.png");
@@ -52,6 +51,8 @@ public class Main extends Application {
     public void moveVehicles() {
         smallVehicles = new SmallVehicles(this);
         smallVehicles.start();
+        largeVehicles = new LargeVehicles(this);
+        largeVehicles.start();
     }
 
     public void checkTime() {
@@ -72,7 +73,11 @@ public class Main extends Application {
         root.getChildren().addAll(imageOfExcavator1, imageOfExcavator2, imageOfExcavator3, imageOfExcavator4, imageOfExcavator5);
     }
 
-    public void createSmallVehicle(ImageView img) {
+    public void createVehicles(ImageView img) {
+        root.getChildren().add(img);
+    }
+
+    public void createLargeVehicles(ImageView img){
         root.getChildren().add(img);
     }
 }

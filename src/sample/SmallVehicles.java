@@ -21,16 +21,16 @@ public class SmallVehicles extends Thread {
 
     SmallVehicles(Main main) {
         this.main = main;
-        main.createSmallVehicle(imageOfSmallVehicle1);
-        main.createSmallVehicle(imageOfSmallVehicle2);
-        main.createSmallVehicle(imageOfSmallVehicle3);
-        main.createSmallVehicle(imageOfSmallVehicle4);
-        main.createSmallVehicle(imageOfSmallVehicle5);
-        main.createSmallVehicle(imageOfSmallVehicle6);
-        main.createSmallVehicle(imageOfSmallVehicle7);
-        main.createSmallVehicle(imageOfSmallVehicle8);
-        main.createSmallVehicle(imageOfSmallVehicle9);
-        main.createSmallVehicle(imageOfSmallVehicle10);
+        main.createVehicles(imageOfSmallVehicle1);
+        main.createVehicles(imageOfSmallVehicle2);
+        main.createVehicles(imageOfSmallVehicle3);
+        main.createVehicles(imageOfSmallVehicle4);
+        main.createVehicles(imageOfSmallVehicle5);
+        main.createVehicles(imageOfSmallVehicle6);
+        main.createVehicles(imageOfSmallVehicle7);
+        main.createVehicles(imageOfSmallVehicle8);
+        main.createVehicles(imageOfSmallVehicle9);
+        main.createVehicles(imageOfSmallVehicle10);
     }
 
     public synchronized void run() {
