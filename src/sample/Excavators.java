@@ -58,21 +58,21 @@ public class Excavators extends Thread {
 
     public void moveDown() {
         xOfExcavators();
-        yOfExcavators(0);
+        yOfExcavators(-50);
         setCoordinates();
         stopBreak();
     }
 
     public void moveUp() {
         xOfExcavators();
-        yOfExcavators(-200);
+        yOfExcavators(-250);
         setCoordinates();
         startBreak();
     }
 
     public void stay() {
         xOfExcavators();
-        yOfExcavators(0);
+        yOfExcavators(-50);
         setCoordinates();
         stopBreak();
     }
