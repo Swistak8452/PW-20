@@ -36,15 +36,25 @@ public class LargeVehicles extends Thread{
 
 
     public void drive(double x, double y) {
-        Platform.runLater(() -> imageOfLargeVehicle1.setTranslateX(x + 2000));
-        Platform.runLater(() -> imageOfLargeVehicle1.setTranslateY(y));
-        Platform.runLater(() -> imageOfLargeVehicle2.setTranslateX(x + 2200));
-        Platform.runLater(() -> imageOfLargeVehicle2.setTranslateY(y));
-        Platform.runLater(() -> imageOfLargeVehicle3.setTranslateX(x + 2400));
-        Platform.runLater(() -> imageOfLargeVehicle3.setTranslateY(y));
-        Platform.runLater(() -> imageOfLargeVehicle4.setTranslateX(x + 2600));
-        Platform.runLater(() -> imageOfLargeVehicle4.setTranslateY(y));
-        Platform.runLater(() -> imageOfLargeVehicle5.setTranslateX(x + 2800));
-        Platform.runLater(() -> imageOfLargeVehicle5.setTranslateY(y));
+//        Platform.runLater(() -> imageOfLargeVehicle1.setTranslateX(x + 2000));
+//        Platform.runLater(() -> imageOfLargeVehicle1.setTranslateY(y));
+//        Platform.runLater(() -> imageOfLargeVehicle2.setTranslateX(x + 2200));
+//        Platform.runLater(() -> imageOfLargeVehicle2.setTranslateY(y));
+//        Platform.runLater(() -> imageOfLargeVehicle3.setTranslateX(x + 2400));
+//        Platform.runLater(() -> imageOfLargeVehicle3.setTranslateY(y));
+//        Platform.runLater(() -> imageOfLargeVehicle4.setTranslateX(x + 2600));
+//        Platform.runLater(() -> imageOfLargeVehicle4.setTranslateY(y));
+//        Platform.runLater(() -> imageOfLargeVehicle5.setTranslateX(x + 2800));
+//        Platform.runLater(() -> imageOfLargeVehicle5.setTranslateY(y));
     }
+
+    public void checkTime(int h, int m, int s){
+        if (h == 0 && m >= 0 && m < 60) {
+        } else if (h == 1 && m >= 0 && m < 60) {
+        } else if (h == 2 && m >= 0 && m < 60) {
+        }  else {
+        }
+
+    }
+
 }

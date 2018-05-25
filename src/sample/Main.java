@@ -30,7 +30,7 @@ public class Main extends Application {
     public void start(Stage primaryStage){
         root.setStyle("-fx-background-color: #00FF00");
         primaryStage.setTitle("My App");
-        primaryStage.setScene(new Scene(root, 1000, 800));
+        primaryStage.setScene(new Scene(root, 1200, 800));
         primaryStage.show();
         checkTime();
         createExcavators();

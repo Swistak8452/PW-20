@@ -5,45 +5,74 @@ import javafx.application.Platform;
 
 public class Excavators extends Thread {
     Main main;
-    int x = 0;
-    int y = 0;
+    double xExcavator1 = 0;
+    double yExcavator1 = 0;
+    double xExcavator2 = 0;
+    double yExcavator2 = 0;
+    double xExcavator3 = 0;
+    double yExcavator3 = 0;
+    double xExcavator4 = 0;
+    double yExcavator4 = 0;
+    double xExcavator5 = 0;
+    double yExcavator5 = 0;
+    SmallVehicles smallVehicles;
+    LargeVehicles largeVehicles;
 
     Excavators(Main main) {
         this.main = main;
     }
 
 
-    public void start(int h, int m, int s) {
-        getTime(h, m, s);
+    public void start(int hour, int minute, int second) {
+        getTime(hour, minute, second);
     }
 
     public void setCoordinates() {
-        Platform.runLater(() -> main.imageOfExcavator1.setTranslateX(-400));
-        Platform.runLater(() -> main.imageOfExcavator1.setTranslateY(y));
-        Platform.runLater(() -> main.imageOfExcavator2.setTranslateX(-200));
-        Platform.runLater(() -> main.imageOfExcavator2.setTranslateY(y));
-        Platform.runLater(() -> main.imageOfExcavator3.setTranslateX(0));
-        Platform.runLater(() -> main.imageOfExcavator3.setTranslateY(y));
-        Platform.runLater(() -> main.imageOfExcavator4.setTranslateX(200));
-        Platform.runLater(() -> main.imageOfExcavator4.setTranslateY(y));
-        Platform.runLater(() -> main.imageOfExcavator5.setTranslateX(400));
-        Platform.runLater(() -> main.imageOfExcavator5.setTranslateY(y));
+        Platform.runLater(() -> main.imageOfExcavator1.setTranslateX(xExcavator1));
+        Platform.runLater(() -> main.imageOfExcavator1.setTranslateY(yExcavator1));
+        Platform.runLater(() -> main.imageOfExcavator2.setTranslateX(xExcavator2));
+        Platform.runLater(() -> main.imageOfExcavator2.setTranslateY(yExcavator2));
+        Platform.runLater(() -> main.imageOfExcavator3.setTranslateX(xExcavator3));
+        Platform.runLater(() -> main.imageOfExcavator3.setTranslateY(yExcavator3));
+        Platform.runLater(() -> main.imageOfExcavator4.setTranslateX(xExcavator4));
+        Platform.runLater(() -> main.imageOfExcavator4.setTranslateY(yExcavator4));
+        Platform.runLater(() -> main.imageOfExcavator5.setTranslateX(xExcavator5));
+        Platform.runLater(() -> main.imageOfExcavator5.setTranslateY(yExcavator5));
+    }
+
+    public void yOfExcavators(double y){
+        yExcavator1 = y;
+        yExcavator2 = y;
+        yExcavator3 = y;
+        yExcavator4 = y;
+        yExcavator5 = y;
+    }
+
+    public void xOfExcavators(){
+        xExcavator1 = -400;
+        xExcavator2 = -200;
+        xExcavator3 = 0;
+        xExcavator4 = 200;
+        xExcavator5 = 400;
     }
 
     public void moveDown() {
-        y = 0;
+        xOfExcavators();
+        yOfExcavators(0);
         setCoordinates();
         stopBreak();
     }
 
     public void moveUp() {
-        y = -200;
+        xOfExcavators();
+        yOfExcavators(-200);
         setCoordinates();
         startBreak();
     }
 
     public void stay() {
-        y = 0;
+        xOfExcavators();
+        yOfExcavators(0);
         setCoordinates();
         stopBreak();
     }
@@ -55,22 +84,25 @@ public class Excavators extends Thread {
 
     public void stopBreak() {
         main.t2.setTranslateX(10000);
+        Platform.runLater(() -> main.t2.setText("Now we have got break!"));
     }
 
-    public void getTime(int h, int m, int s) {
-        if (h == 0 && m >= 0 && m < 5) {
+    public void getTime(int hour, int minute, int second) {
+        if (hour == 0 && minute >= 0 && minute < 10) {
             moveDown();
-        } else if (h == 0 && m >= 5 && m < 15) {
+        } else if (hour == 0 && minute >= 10 && minute < 20) {
             moveUp();
-        } else if (h == 0 && m >= 15 && m < 30) {
+        } else if (hour == 0 && minute >= 20 && minute < 30) {
             moveDown();
-        } else if (h == 0 && m >= 30 && m < 45) {
+        }  else if (hour == 0 && minute >= 30 && minute < 40) {
             moveUp();
-        } else if (h == 0 && m >= 45 && m < 60) {
+        } else if (hour == 0 && minute >= 40 && minute < 50) {
             moveDown();
-        } else if (h == 1 && m >= 0 && m < 15) {
+        }else if (hour == 0 && minute >= 50 && minute < 60) {
             moveUp();
-        } else {
+        } else if (hour == 1 && minute >= 0 && minute < 60) {
+            moveDown();
+        }else {
             stay();
         }
     }

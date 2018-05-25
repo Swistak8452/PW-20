@@ -6,6 +6,9 @@ public class Time extends Thread {
     public int minute = 0;
     public int second = 0;
     Main main;
+    SmallVehicles smallVehicles;
+    LargeVehicles largeVehicles;
+    Work work;
 
     Time(Main main) {
         this.main = main;
@@ -29,6 +32,9 @@ public class Time extends Thread {
                 if (hour == 0 && minute == 5 && second == 0) {
                 }
                 setTime(hour, minute, second);
+                getHour(hour);
+                getMinute(minute);
+                getSecond(second);
                 Thread.sleep(20);
             } catch (InterruptedException e) {
             }
@@ -40,6 +46,17 @@ public class Time extends Thread {
         excavators.start(h, m, s);
         System.out.println(h + ":" + m + ":" + s);
         main.updateTime(h, m, s);
+    }
 
+    public int getHour(int hour){
+        return hour;
+    }
+
+    public int getMinute(int minute){
+        return minute;
+    }
+
+    public int getSecond(int minute){
+        return second;
     }
 }
