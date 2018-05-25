@@ -1,16 +1,11 @@
 package sample;
 
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-
 public class Time extends Thread {
 
     public int hour = 0;
     public int minute = 0;
     public int second = 0;
     Main main;
-    Excavators excavators = new Excavators(main);
-
 
     Time(Main main) {
         this.main = main;
@@ -39,7 +34,6 @@ public class Time extends Thread {
             }
         }
     }
-
 
     public void setTime(int h, int m, int s) {
         Excavators excavators = new Excavators(main);

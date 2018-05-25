@@ -1,6 +1,8 @@
 package sample;
 
 
+import javafx.application.Platform;
+
 public class Excavators extends Thread {
     Main main;
     int x = 0;
@@ -11,64 +13,48 @@ public class Excavators extends Thread {
     }
 
 
-//    public void run() {
-//        for (; ; ) {
-//            try {
-//                System.out.println(x + "a" + y);
-//                Thread.sleep(20);
-//            } catch (InterruptedException e) {
-//            }
-//        }
-//    }
-
-    public void start(int h, int m, int s){
+    public void start(int h, int m, int s) {
         getTime(h, m, s);
     }
 
-    public void setCoordinates1(double x, double y) {
-        main.moveExcavator1(x, y);
-    }
-
-    public void setCoordinates2(double x, double y) {
-        main.moveExcavator2(x, y);
-    }
-
-    public void setCoordinates3(double x, double y) {
-        main.moveExcavator3(x, y);
-    }
-
-    public void setCoordinates4(double x, double y) {
-        main.moveExcavator4(x, y);
-    }
-
-    public void setCoordinates5(double x, double y) {
-        main.moveExcavator5(x, y);
-    }
-
     public void setCoordinates() {
-        setCoordinates1(-400, y);
-        setCoordinates2(-200, y);
-        setCoordinates3(0, y);
-        setCoordinates4(200, y);
-        setCoordinates5(400, y);
+        Platform.runLater(() -> main.imageOfExcavator1.setTranslateX(-400));
+        Platform.runLater(() -> main.imageOfExcavator1.setTranslateY(y));
+        Platform.runLater(() -> main.imageOfExcavator2.setTranslateX(-200));
+        Platform.runLater(() -> main.imageOfExcavator2.setTranslateY(y));
+        Platform.runLater(() -> main.imageOfExcavator3.setTranslateX(0));
+        Platform.runLater(() -> main.imageOfExcavator3.setTranslateY(y));
+        Platform.runLater(() -> main.imageOfExcavator4.setTranslateX(200));
+        Platform.runLater(() -> main.imageOfExcavator4.setTranslateY(y));
+        Platform.runLater(() -> main.imageOfExcavator5.setTranslateX(400));
+        Platform.runLater(() -> main.imageOfExcavator5.setTranslateY(y));
     }
 
     public void moveDown() {
         y = 0;
         setCoordinates();
-        main.stopBreak();
+        stopBreak();
     }
 
     public void moveUp() {
         y = -200;
         setCoordinates();
-        main.startBreak();
+        startBreak();
     }
 
     public void stay() {
         y = 0;
         setCoordinates();
-        main.stopBreak();
+        stopBreak();
+    }
+
+    public void startBreak() {
+        main.t2.setTranslateX(0);
+        Platform.runLater(() -> main.t2.setText("Now we have got break!"));
+    }
+
+    public void stopBreak() {
+        main.t2.setTranslateX(10000);
     }
 
     public void getTime(int h, int m, int s) {
@@ -78,13 +64,13 @@ public class Excavators extends Thread {
             moveUp();
         } else if (h == 0 && m >= 15 && m < 30) {
             moveDown();
-        } else if(h == 0 && m >= 30 && m < 45){
+        } else if (h == 0 && m >= 30 && m < 45) {
             moveUp();
-        }else if(h == 0 && m >= 45 && m < 60){
+        } else if (h == 0 && m >= 45 && m < 60) {
             moveDown();
-        }else if(h == 1 && m >= 0 && m < 15){
+        } else if (h == 1 && m >= 0 && m < 15) {
             moveUp();
-        }else{
+        } else {
             stay();
         }
     }
