@@ -6,9 +6,6 @@ public class Time extends Thread {
     public int minute = 0;
     public int second = 0;
     Main main;
-    SmallVehicles smallVehicles;
-    LargeVehicles largeVehicles;
-    Work work;
 
     Time(Main main) {
         this.main = main;
@@ -48,15 +45,15 @@ public class Time extends Thread {
         main.updateTime(h, m, s);
     }
 
-    public int getHour(int hour){
+    public int getHour(int hour) {
         return hour;
     }
 
-    public int getMinute(int minute){
+    public int getMinute(int minute) {
         return minute;
     }
 
-    public int getSecond(int minute){
+    public int getSecond(int second) {
         return second;
     }
 }

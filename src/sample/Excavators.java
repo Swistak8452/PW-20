@@ -15,13 +15,10 @@ public class Excavators extends Thread {
     double yExcavator4 = 0;
     double xExcavator5 = 0;
     double yExcavator5 = 0;
-    SmallVehicles smallVehicles;
-    LargeVehicles largeVehicles;
 
     Excavators(Main main) {
         this.main = main;
     }
-
 
     public void start(int hour, int minute, int second) {
         getTime(hour, minute, second);
@@ -38,9 +35,10 @@ public class Excavators extends Thread {
         Platform.runLater(() -> main.imageOfExcavator4.setTranslateY(yExcavator4));
         Platform.runLater(() -> main.imageOfExcavator5.setTranslateX(xExcavator5));
         Platform.runLater(() -> main.imageOfExcavator5.setTranslateY(yExcavator5));
+        Platform.runLater(() -> main.t2.setText("Now we have got break!"));
     }
 
-    public void yOfExcavators(double y){
+    public void yOfExcavators(double y) {
         yExcavator1 = y;
         yExcavator2 = y;
         yExcavator3 = y;
@@ -48,7 +46,7 @@ public class Excavators extends Thread {
         yExcavator5 = y;
     }
 
-    public void xOfExcavators(){
+    public void xOfExcavators() {
         xExcavator1 = -400;
         xExcavator2 = -200;
         xExcavator3 = 0;
@@ -79,12 +77,10 @@ public class Excavators extends Thread {
 
     public void startBreak() {
         main.t2.setTranslateX(0);
-        Platform.runLater(() -> main.t2.setText("Now we have got break!"));
     }
 
     public void stopBreak() {
         main.t2.setTranslateX(10000);
-        Platform.runLater(() -> main.t2.setText("Now we have got break!"));
     }
 
     public void getTime(int hour, int minute, int second) {
@@ -94,15 +90,37 @@ public class Excavators extends Thread {
             moveUp();
         } else if (hour == 0 && minute >= 20 && minute < 30) {
             moveDown();
-        }  else if (hour == 0 && minute >= 30 && minute < 40) {
+        } else if (hour == 0 && minute >= 30 && minute < 40) {
             moveUp();
         } else if (hour == 0 && minute >= 40 && minute < 50) {
             moveDown();
-        }else if (hour == 0 && minute >= 50 && minute < 60) {
+        } else if (hour == 0 && minute >= 50 && minute < 60) {
             moveUp();
-        } else if (hour == 1 && minute >= 0 && minute < 60) {
+        } else if (hour == 1 && minute >= 0 && minute < 10) {
             moveDown();
-        }else {
+        } else if (hour == 1 && minute >= 10 && minute < 20) {
+            moveUp();
+        } else if (hour == 1 && minute >= 20 && minute < 30) {
+            moveDown();
+        } else if (hour == 1 && minute >= 30 && minute < 40) {
+            moveUp();
+        } else if (hour == 1 && minute >= 40 && minute < 50) {
+            moveDown();
+        } else if (hour == 1 && minute >= 50 && minute < 60) {
+            moveUp();
+        } else if (hour == 2 && minute >= 0 && minute < 10) {
+            moveDown();
+        } else if (hour == 2 && minute >= 10 && minute < 20) {
+            moveUp();
+        } else if (hour == 2 && minute >= 20 && minute < 30) {
+            moveDown();
+        } else if (hour == 2 && minute >= 30 && minute < 40) {
+            moveUp();
+        } else if (hour == 2 && minute >= 40 && minute < 50) {
+            moveDown();
+        } else if (hour == 2 && minute >= 50 && minute < 60) {
+            moveUp();
+        } else {
             stay();
         }
     }
