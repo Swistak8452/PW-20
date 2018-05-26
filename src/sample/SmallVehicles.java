@@ -92,7 +92,7 @@ public class SmallVehicles extends Thread {
                 } else if (hour == 2 && minute >= 50 && minute < 60) {
                     reservations.lockAll();
                 } else {
-                    reservations.unlockAll();
+                    //reservations.unlockAll();
                 }
                 refreshImageOfVehicle(xSmallVehicle1, ySmallVehicle1, xSmallVehicle2, ySmallVehicle2, xSmallVehicle3, ySmallVehicle3, xSmallVehicle4, ySmallVehicle4, xSmallVehicle5, ySmallVehicle5, xSmallVehicle6, ySmallVehicle6, xSmallVehicle7, ySmallVehicle7, xSmallVehicle8, ySmallVehicle8, xSmallVehicle9, ySmallVehicle9, xSmallVehicle10, ySmallVehicle10, xLargeVehicle1, yLargeVehicle1, xLargeVehicle2, yLargeVehicle2, xLargeVehicle3, yLargeVehicle3, xLargeVehicle4, yLargeVehicle4, xLargeVehicle5, yLargeVehicle5);
                 Thread.sleep(20);
@@ -155,9 +155,7 @@ public class SmallVehicles extends Thread {
     }
 
     public double choosePlaceOfWork(double vehicleX, int vehicleNumber) {
-        if (vehicleX < -1500) {
-            return restartVehicle(vehicleNumber);
-        } else if (vehicleX == -400) {
+        if (vehicleX == -400) {
             placeNumber = 1;
         } else if (vehicleX == -300) {
             placeNumber = 2;
@@ -182,6 +180,9 @@ public class SmallVehicles extends Thread {
     }
 
     public double make(int placeNumber, double vehicleX, int vehicleNumber) {
+        if (vehicleX < -800) {
+            return restartVehicle(vehicleNumber);
+        }
         if (vehicleNumber > 10) {
             if (placeNumber % 2 == 1 && reservations.checkReservation(placeNumber) == 0 && reservations.checkReservation(placeNumber + 1) == 0) {
                 reservations.lockPlace(placeNumber, vehicleNumber);
@@ -204,25 +205,23 @@ public class SmallVehicles extends Thread {
                 return vehicleX - 5;
             }
         } else {
-            {
-                if (reservations.checkReservation(placeNumber) == 0) {
-                    reservations.lockPlace(placeNumber, vehicleNumber);
-                    setVehicleY(vehicleNumber, 40);
-                    work.setTime(vehicleNumber);
-                    return vehicleX;
-                } else if (reservations.checkReservation(placeNumber) == vehicleNumber) {
-                    if (work.checkTime(vehicleNumber) - work.chooseTime(vehicleNumber) > 15000) {
-                        reservations.unlockPlace(placeNumber, vehicleNumber);
-                        setVehicleY(vehicleNumber, 140);
-                        return restartVehicle(vehicleNumber);
-                    } else {
-                        setVehicleY(vehicleNumber, 40);
-                        return vehicleX;
-                    }
-                } else {
+            if (reservations.checkReservation(placeNumber) == 0) {
+                reservations.lockPlace(placeNumber, vehicleNumber);
+                setVehicleY(vehicleNumber, 40);
+                work.setTime(vehicleNumber);
+                return vehicleX;
+            } else if (reservations.checkReservation(placeNumber) == vehicleNumber) {
+                if (work.checkTime(vehicleNumber) - work.chooseTime(vehicleNumber) > 15000) {
+                    reservations.unlockPlace(placeNumber, vehicleNumber);
                     setVehicleY(vehicleNumber, 140);
-                    return vehicleX - 5;
+                    return restartVehicle(vehicleNumber);
+                } else {
+                    setVehicleY(vehicleNumber, 40);
+                    return vehicleX;
                 }
+            } else {
+                setVehicleY(vehicleNumber, 140);
+                return vehicleX - 5;
             }
         }
     }

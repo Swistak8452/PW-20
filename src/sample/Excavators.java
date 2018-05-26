@@ -58,29 +58,21 @@ public class Excavators extends Thread {
         xOfExcavators();
         yOfExcavators(-50);
         setCoordinates();
-        stopBreak();
+        Platform.runLater(() -> main.t2.setTranslateX(10000));
     }
 
     public void moveUp() {
         xOfExcavators();
         yOfExcavators(-250);
         setCoordinates();
-        startBreak();
+        Platform.runLater(() -> main.t2.setTranslateX(0));
     }
 
     public void stay() {
         xOfExcavators();
         yOfExcavators(-50);
         setCoordinates();
-        stopBreak();
-    }
-
-    public void startBreak() {
-        main.t2.setTranslateX(0);
-    }
-
-    public void stopBreak() {
-        main.t2.setTranslateX(10000);
+        Platform.runLater(() -> main.t2.setTranslateX(10000));
     }
 
     public void getTime(int hour, int minute, int second) {
