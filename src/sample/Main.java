@@ -14,7 +14,7 @@ import javafx.stage.WindowEvent;
 public class Main extends Application {
     StackPane root = new StackPane();
     Time time;
-    SmallVehicles smallVehicles;
+    Vehicles vehicles;
     Text t1 = new Text();
     Text t2 = new Text();
     Image excavatorImage = new Image("resources/excavator.png");
@@ -47,8 +47,8 @@ public class Main extends Application {
     }
 
     public void moveVehicles() {
-        smallVehicles = new SmallVehicles(this);
-        smallVehicles.start();
+        vehicles = new Vehicles(this);
+        vehicles.start();
     }
 
     public void checkTime() {

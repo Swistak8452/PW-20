@@ -89,7 +89,6 @@ public class Excavators extends Thread {
         }else if (minute >= 50 && minute < 60) {
             moveUp();
         }else {
-            //stay();
         }
     }
 }

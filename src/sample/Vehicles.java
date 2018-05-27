@@ -4,7 +4,7 @@ import javafx.application.Platform;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class SmallVehicles extends Thread {
+public class Vehicles extends Thread {
     Main main;
     Work work = new Work();
     Reservations reservations = new Reservations();
@@ -21,7 +21,7 @@ public class SmallVehicles extends Thread {
     ImageView imageOfSmallVehicle1 = new ImageView(small), imageOfSmallVehicle2 = new ImageView(small), imageOfSmallVehicle3 = new ImageView(small), imageOfSmallVehicle4 = new ImageView(small), imageOfSmallVehicle5 = new ImageView(small), imageOfSmallVehicle6 = new ImageView(small), imageOfSmallVehicle7 = new ImageView(small), imageOfSmallVehicle8 = new ImageView(small), imageOfSmallVehicle9 = new ImageView(small), imageOfSmallVehicle10 = new ImageView(small);
     ImageView imageOfLargeVehicle1 = new ImageView(large), imageOfLargeVehicle2 = new ImageView(large), imageOfLargeVehicle3 = new ImageView(large), imageOfLargeVehicle4 = new ImageView(large), imageOfLargeVehicle5 = new ImageView(large);
 
-    SmallVehicles(Main main) {
+    Vehicles(Main main) {
         this.main = main;
         main.createVehicles(imageOfSmallVehicle1);
         main.createVehicles(imageOfSmallVehicle2);
@@ -167,7 +167,7 @@ public class SmallVehicles extends Thread {
                 work.setTime(vehicleNumber);
                 return vehicleX;
             } else if (reservations.checkReservation(placeNumber) == vehicleNumber) {
-                if (work.checkTime(vehicleNumber) - work.chooseTime(vehicleNumber) > 12000) {
+                if (work.checkTime(vehicleNumber) - work.chooseTime(vehicleNumber) > 2000) {
                     reservations.unlockPlace(placeNumber);
                     reservations.unlockPlace(placeNumber + 1);
                     setVehicleY(vehicleNumber, 140);
@@ -191,7 +191,7 @@ public class SmallVehicles extends Thread {
                 work.setTime(vehicleNumber);
                 return vehicleX;
             } else if (reservations.checkReservation(placeNumber) == vehicleNumber) {
-                if (work.checkTime(vehicleNumber) - work.chooseTime(vehicleNumber) > 12000) {
+                if (work.checkTime(vehicleNumber) - work.chooseTime(vehicleNumber) > 2000) {
                     reservations.unlockPlace(placeNumber);
                     setVehicleY(vehicleNumber, 140);
                     return work.restartVehicle(vehicleNumber);
