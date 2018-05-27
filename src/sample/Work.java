@@ -105,4 +105,46 @@ public class Work {
             return d1.getTime() + 1000;
         }
     }
+
+
+
+    public double restartVehicle(int vehicleNumber) {
+        if (vehicleNumber == 1) {
+            return 800;
+        } else if (vehicleNumber == 2) {
+            return 1000;
+        } else if (vehicleNumber == 3) {
+            return 1200;
+        } else if (vehicleNumber == 4) {
+            return 1400;
+        } else if (vehicleNumber == 5) {
+            return 1600;
+        } else if (vehicleNumber == 6) {
+            return 1800;
+        } else if (vehicleNumber == 7) {
+            return 2000;
+        } else if (vehicleNumber == 8) {
+            return 2200;
+        } else if (vehicleNumber == 9) {
+            return 2400;
+        } else if (vehicleNumber == 10) {
+            return 2600;
+        } else if (vehicleNumber == 11) {
+            return 2600;
+        } else if (vehicleNumber == 12) {
+            return 2800;
+        } else if (vehicleNumber == 13) {
+            return 3000;
+        } else if (vehicleNumber == 14) {
+            return 3200;
+        } else if (vehicleNumber == 15) {
+            return 3400;
+        } else {
+            return 3600;
+        }
+    }
+
+
+
+
 }

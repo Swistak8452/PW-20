@@ -11,7 +11,7 @@ public class Reservations {
         return tableOfPlaces[placeNumber] = vehicleNumber;
     }
 
-    public int unlockPlace(int placeNumber, int vehicleNumber) {
+    public int unlockPlace(int placeNumber) {
         return tableOfPlaces[placeNumber] = 0;
     }
 
@@ -21,14 +21,11 @@ public class Reservations {
                 lockPlace(i, j);
             }
         }
-
     }
 
     public void unlockAll() {
         for (int i = 0; i < 11; i++) {
-            for (int j = 0; j < 11; j++) {
-                unlockPlace(i, j);
-            }
+            unlockPlace(i);
         }
     }
 }

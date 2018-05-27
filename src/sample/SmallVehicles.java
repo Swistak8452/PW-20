@@ -56,43 +56,19 @@ public class SmallVehicles extends Thread {
                     hour = 0;
                 }
                 setX();
-                if (hour == 0 && minute >= 0 && minute < 10) {
-                } else if (hour == 0 && minute >= 10 && minute < 20) {
+                if (minute == 0 && second == 0) {
+                    reservations.unlockAll();
+                } else if (minute >= 10 && minute < 20) {
                     reservations.lockAll();
                 } else if (hour == 0 && minute == 20 && second == 0) {
                     reservations.unlockAll();
-                } else if (hour == 0 && minute >= 30 && minute < 40) {
+                } else if (minute >= 30 && minute < 40) {
                     reservations.lockAll();
                 } else if (hour == 0 && minute == 40 && second == 0) {
                     reservations.unlockAll();
-                } else if (hour == 0 && minute >= 50 && minute < 60) {
+                } else if (minute >= 50 && minute < 60) {
                     reservations.lockAll();
-                } else if (hour == 1 && minute == 0 && second == 0) {
-                    reservations.unlockAll();
-                } else if (hour == 1 && minute >= 10 && minute < 20) {
-                    reservations.lockAll();
-                } else if (hour == 1 && minute == 20 && second == 0) {
-                    reservations.unlockAll();
-                } else if (hour == 1 && minute >= 30 && minute < 40) {
-                    reservations.lockAll();
-                } else if (hour == 1 && minute == 40 && second == 0) {
-                    reservations.unlockAll();
-                } else if (hour == 1 && minute >= 50 && minute < 60) {
-                    reservations.lockAll();
-                } else if (hour == 2 && minute == 0 && second == 0) {
-                    reservations.unlockAll();
-                } else if (hour == 2 && minute >= 10 && minute < 20) {
-                    reservations.lockAll();
-                } else if (hour == 2 && minute == 20 && second == 0) {
-                    reservations.unlockAll();
-                } else if (hour == 2 && minute >= 30 && minute < 40) {
-                    reservations.lockAll();
-                } else if (hour == 2 && minute == 40 && second == 0) {
-                    reservations.unlockAll();
-                } else if (hour == 2 && minute >= 50 && minute < 60) {
-                    reservations.lockAll();
-                } else {
-                    //reservations.unlockAll();
+                }  else {
                 }
                 refreshImageOfVehicle(xSmallVehicle1, ySmallVehicle1, xSmallVehicle2, ySmallVehicle2, xSmallVehicle3, ySmallVehicle3, xSmallVehicle4, ySmallVehicle4, xSmallVehicle5, ySmallVehicle5, xSmallVehicle6, ySmallVehicle6, xSmallVehicle7, ySmallVehicle7, xSmallVehicle8, ySmallVehicle8, xSmallVehicle9, ySmallVehicle9, xSmallVehicle10, ySmallVehicle10, xLargeVehicle1, yLargeVehicle1, xLargeVehicle2, yLargeVehicle2, xLargeVehicle3, yLargeVehicle3, xLargeVehicle4, yLargeVehicle4, xLargeVehicle5, yLargeVehicle5);
                 Thread.sleep(20);
@@ -176,12 +152,12 @@ public class SmallVehicles extends Thread {
         } else if (vehicleX == 500) {
             placeNumber = 10;
         }
-        return make(placeNumber, vehicleX, vehicleNumber);
+        return load(placeNumber, vehicleX, vehicleNumber);
     }
 
-    public double make(int placeNumber, double vehicleX, int vehicleNumber) {
-        if (vehicleX < -800) {
-            return restartVehicle(vehicleNumber);
+    public double load(int placeNumber, double vehicleX, int vehicleNumber) {
+        if (vehicleX < - 800) {
+            return work.restartVehicle(vehicleNumber);
         }
         if (vehicleNumber > 10) {
             if (placeNumber % 2 == 1 && reservations.checkReservation(placeNumber) == 0 && reservations.checkReservation(placeNumber + 1) == 0) {
@@ -191,14 +167,18 @@ public class SmallVehicles extends Thread {
                 work.setTime(vehicleNumber);
                 return vehicleX;
             } else if (reservations.checkReservation(placeNumber) == vehicleNumber) {
-                if (work.checkTime(vehicleNumber) - work.chooseTime(vehicleNumber) > 15000) {
-                    reservations.unlockPlace(placeNumber, vehicleNumber);
-                    reservations.unlockPlace(placeNumber + 1, vehicleNumber);
+                if (work.checkTime(vehicleNumber) - work.chooseTime(vehicleNumber) > 12000) {
+                    reservations.unlockPlace(placeNumber);
+                    reservations.unlockPlace(placeNumber + 1);
                     setVehicleY(vehicleNumber, 140);
-                    return restartVehicle(vehicleNumber);
+                    return work.restartVehicle(vehicleNumber);
                 } else {
                     setVehicleY(vehicleNumber, 40);
-                    return vehicleX;
+                    if(placeNumber != 0) {
+                        return (-500 + placeNumber * 100);
+                    } else {
+                        return vehicleX;
+                    }
                 }
             } else {
                 setVehicleY(vehicleNumber, 140);
@@ -211,13 +191,17 @@ public class SmallVehicles extends Thread {
                 work.setTime(vehicleNumber);
                 return vehicleX;
             } else if (reservations.checkReservation(placeNumber) == vehicleNumber) {
-                if (work.checkTime(vehicleNumber) - work.chooseTime(vehicleNumber) > 15000) {
-                    reservations.unlockPlace(placeNumber, vehicleNumber);
+                if (work.checkTime(vehicleNumber) - work.chooseTime(vehicleNumber) > 12000) {
+                    reservations.unlockPlace(placeNumber);
                     setVehicleY(vehicleNumber, 140);
-                    return restartVehicle(vehicleNumber);
+                    return work.restartVehicle(vehicleNumber);
                 } else {
                     setVehicleY(vehicleNumber, 40);
-                    return vehicleX;
+                    if(placeNumber != 0) {
+                        return (-500 + placeNumber * 100);
+                    } else {
+                        return vehicleX;
+                    }
                 }
             } else {
                 setVehicleY(vehicleNumber, 140);
@@ -226,41 +210,7 @@ public class SmallVehicles extends Thread {
         }
     }
 
-    public double restartVehicle(int vehicleNumber) {
-        if (vehicleNumber == 1) {
-            return xSmallVehicle1 = 800;
-        } else if (vehicleNumber == 2) {
-            return xSmallVehicle2 = 1000;
-        } else if (vehicleNumber == 3) {
-            return xSmallVehicle3 = 1200;
-        } else if (vehicleNumber == 4) {
-            return xSmallVehicle4 = 1400;
-        } else if (vehicleNumber == 5) {
-            return xSmallVehicle5 = 1600;
-        } else if (vehicleNumber == 6) {
-            return xSmallVehicle6 = 1800;
-        } else if (vehicleNumber == 7) {
-            return xSmallVehicle7 = 2000;
-        } else if (vehicleNumber == 8) {
-            return xSmallVehicle8 = 2200;
-        } else if (vehicleNumber == 9) {
-            return xSmallVehicle9 = 2400;
-        } else if (vehicleNumber == 10) {
-            return xSmallVehicle10 = 2600;
-        } else if (vehicleNumber == 11) {
-            return xLargeVehicle1 = 2600;
-        } else if (vehicleNumber == 12) {
-            return xLargeVehicle2 = 2800;
-        } else if (vehicleNumber == 13) {
-            return xLargeVehicle3 = 3000;
-        } else if (vehicleNumber == 14) {
-            return xLargeVehicle4 = 3200;
-        } else if (vehicleNumber == 15) {
-            return xLargeVehicle5 = 3400;
-        } else {
-            return 3600;
-        }
-    }
+
 
     public void refreshImageOfVehicle(double x1, double y1, double x2, double y2, double x3, double y3, double x4, double y4, double x5, double y5, double x6, double y6, double x7, double y7, double x8, double y8, double x9, double y9, double x10, double y10, double x11, double y11, double x12, double y12, double x13, double y13, double x14, double y14, double x15, double y15) {
         Platform.runLater(() -> imageOfSmallVehicle1.setTranslateX(x1));

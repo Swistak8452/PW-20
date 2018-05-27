@@ -76,44 +76,20 @@ public class Excavators extends Thread {
     }
 
     public void getTime(int hour, int minute, int second) {
-        if (hour == 0 && minute >= 0 && minute < 10) {
+        if (minute >= 0 && minute < 10) {
             moveDown();
-        } else if (hour == 0 && minute >= 10 && minute < 20) {
+        } else if (minute >= 10 && minute < 20) {
             moveUp();
-        } else if (hour == 0 && minute >= 20 && minute < 30) {
+        }else if (minute >= 20 && minute < 30) {
             moveDown();
-        } else if (hour == 0 && minute >= 30 && minute < 40) {
+        }else if (minute >= 30 && minute < 40) {
             moveUp();
-        } else if (hour == 0 && minute >= 40 && minute < 50) {
+        }else if (minute >= 40 && minute < 50) {
             moveDown();
-        } else if (hour == 0 && minute >= 50 && minute < 60) {
+        }else if (minute >= 50 && minute < 60) {
             moveUp();
-        } else if (hour == 1 && minute >= 0 && minute < 10) {
-            moveDown();
-        } else if (hour == 1 && minute >= 10 && minute < 20) {
-            moveUp();
-        } else if (hour == 1 && minute >= 20 && minute < 30) {
-            moveDown();
-        } else if (hour == 1 && minute >= 30 && minute < 40) {
-            moveUp();
-        } else if (hour == 1 && minute >= 40 && minute < 50) {
-            moveDown();
-        } else if (hour == 1 && minute >= 50 && minute < 60) {
-            moveUp();
-        } else if (hour == 2 && minute >= 0 && minute < 10) {
-            moveDown();
-        } else if (hour == 2 && minute >= 10 && minute < 20) {
-            moveUp();
-        } else if (hour == 2 && minute >= 20 && minute < 30) {
-            moveDown();
-        } else if (hour == 2 && minute >= 30 && minute < 40) {
-            moveUp();
-        } else if (hour == 2 && minute >= 40 && minute < 50) {
-            moveDown();
-        } else if (hour == 2 && minute >= 50 && minute < 60) {
-            moveUp();
-        } else {
-            stay();
+        }else {
+            //stay();
         }
     }
 }
